@@ -18,9 +18,13 @@ namespace RunLib.model
             get => _navn;
             set
             {
-                if (string.IsNullOrWhiteSpace(value) || value.Length < 3)
+                if (string.IsNullOrWhiteSpace(value) )
                 {
-                    throw new ArgumentException("Navn er krævet og skal være mindst 3 tegn langt");
+                    throw new ArgumentNullException("Navn er krævet");
+                }
+                if (value.Length < 3)
+                {
+                    throw new ArgumentException("Navn skal være mindst 3 tegn langt");
                 }
                 _navn = value;
             }
