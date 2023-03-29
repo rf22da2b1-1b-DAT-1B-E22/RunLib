@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RunLib.model
 {
+
+    public enum MedlemsType { ung, senior, ældre };
+
     public class Medlem
     {
         private String _navn;
@@ -70,13 +73,22 @@ namespace RunLib.model
             }
         }
 
-        public Medlem(string navn, int medlemsId, string mobil, string løbeHold, double pris)
+        public MedlemsType MedlemsType { get; set; }
+
+        public Medlem(string navn, int medlemsId, string mobil, string løbeHold, double pris, MedlemsType type)
         {
             Navn = navn;
             _medlemsId = medlemsId;
             Mobil = mobil;
             LøbeHold = løbeHold;
             Pris = pris;
+            MedlemsType = type;
+        }
+
+
+        public Medlem(string navn, int medlemsId, string mobil, string løbeHold, double pris):
+            this(navn, medlemsId,mobil,løbeHold,pris, MedlemsType.senior)
+        {
         }
 
         public Medlem():this("dummy",0,"11111111", "rød", 50)
@@ -85,7 +97,7 @@ namespace RunLib.model
 
         public override string ToString()
         {
-            return $"{{{nameof(Navn)}={Navn}, {nameof(MedlemsId)}={MedlemsId.ToString()}, {nameof(Mobil)}={Mobil}, {nameof(LøbeHold)}={LøbeHold}, {nameof(Pris)}={Pris.ToString()}}}";
+            return $"{{{nameof(Navn)}={Navn}, {nameof(MedlemsId)}={MedlemsId.ToString()}, {nameof(Mobil)}={Mobil}, {nameof(LøbeHold)}={LøbeHold}, {nameof(Pris)}={Pris.ToString()}, {nameof(MedlemsType)}={MedlemsType}}}";
         }
     }
 }

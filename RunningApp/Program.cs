@@ -3,6 +3,7 @@ using RunLib.model;
 
 Console.WriteLine("Hello, World!");
 
+
 Medlem medlem1 = new Medlem();
 Medlem medlem2 = new Medlem("Peter",222,"33445566","gul", 120 );
 Console.WriteLine(medlem1);
@@ -43,3 +44,7 @@ catch (ArgumentException ae)
 {
     Console.WriteLine(ae.Message);
 }
+
+Console.WriteLine("Enum");
+Medlem nytMedlem = new Medlem("Jakob", 345, "66555566", "blå", 100, MedlemsType.ung);
+Console.WriteLine(nytMedlem);
